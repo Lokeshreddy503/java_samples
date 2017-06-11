@@ -1,0 +1,31 @@
+
+abstract public class Test1 
+{  
+	void m1()
+	{
+	  System.out.println("hi");
+	}
+}
+class loki extends Test1
+{
+	void m2()
+	{
+		System.out.println("bye");
+	}
+	public static void main(String[] args)
+	{
+		//loki k = new loki();
+		Test1 t = new Test1()
+		{
+			
+		};
+		t.m1();
+		
+	}
+	
+}
+
+
+	
+
+

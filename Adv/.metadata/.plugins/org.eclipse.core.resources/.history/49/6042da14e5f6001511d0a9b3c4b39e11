@@ -1,0 +1,31 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Welcome Page</title>
+</head>
+<body>
+
+  
+  
+<jsp:include page="Lo.html"></jsp:include>
+<%
+
+
+String o =(String)request.getAttribute("description");
+String p = (String)request.getAttribute("priority");
+String k = (String)request.getAttribute("name");
+String[] collections = {o,p,k};
+for(String ss : collections)
+{
+	
+	out.println(ss);
+	out.println("<br>");
+}
+
+
+
+
+%>
+</body>
+</html>

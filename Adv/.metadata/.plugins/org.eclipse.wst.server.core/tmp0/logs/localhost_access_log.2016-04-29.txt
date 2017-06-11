@@ -1,0 +1,8 @@
+127.0.0.1 - - [29/Apr/2016:10:18:47 -0400] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [29/Apr/2016:10:18:52 -0400] "GET /RegistrationPageGenericservlet/ HTTP/1.1" 200 481
+0:0:0:0:0:0:0:1 - - [29/Apr/2016:10:19:15 -0400] "POST /RegistrationPageGenericservlet/Rpage HTTP/1.1" 500 3529
+127.0.0.1 - - [29/Apr/2016:10:23:57 -0400] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [29/Apr/2016:10:23:58 -0400] "GET /Registaration/ HTTP/1.1" 200 916
+0:0:0:0:0:0:0:1 - - [29/Apr/2016:10:24:16 -0400] "POST /Registaration/Registartion HTTP/1.1" 500 3561
+127.0.0.1 - - [29/Apr/2016:10:26:18 -0400] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [29/Apr/2016:10:26:22 -0400] "POST /Registaration/Registartion HTTP/1.1" 404 1046

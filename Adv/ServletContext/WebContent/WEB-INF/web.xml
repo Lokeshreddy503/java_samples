@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>ServletContext</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+    <description></description>
+    <display-name>Student</display-name>
+    <servlet-name>Student</servlet-name>
+    <servlet-class>servletpack.Student</servlet-class>
+    <init-param>
+      <description></description>
+      <param-name>username</param-name>
+      <param-value>system</param-value>
+    </init-param>
+    <init-param>
+      <description></description>
+      <param-name>password</param-name>
+      <param-value>lokesh</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Student</servlet-name>
+    <url-pattern>/sinfo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Course</display-name>
+    <servlet-name>Course</servlet-name>
+    <servlet-class>servletpack.Course</servlet-class>
+    <init-param>
+      <description></description>
+      <param-name>username</param-name>
+      <param-value>scott</param-value>
+    </init-param>
+    <init-param>
+      <description></description>
+      <param-name>password</param-name>
+      <param-value>tiger</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Course</servlet-name>
+    <url-pattern>/cinfo</url-pattern>
+  </servlet-mapping>
+  <context-param>
+  <param-name>driver</param-name>
+  <param-value>oracle.jdbc.driver.OracleDriver</param-value>
+    </context-param>
+    <context-param>
+    <param-name>url</param-name>
+  <param-value>jdbc:oracle:thin:@localhost:1521:xe</param-value>
+    
+    </context-param>
+</web-app>

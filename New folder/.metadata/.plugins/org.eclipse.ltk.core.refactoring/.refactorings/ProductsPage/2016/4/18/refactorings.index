@@ -1,0 +1,5 @@
+1461805215978	Move 'welcome.jsp' to 'WEB-INF'
+1461805744840	Move 'register.jsp' to 'WEB-INF'
+1461806272609	Rename resource 'register.jsp'
+1461809391599	Delete element
+1461809678798	Rename resource 'spring-servlet.xml'

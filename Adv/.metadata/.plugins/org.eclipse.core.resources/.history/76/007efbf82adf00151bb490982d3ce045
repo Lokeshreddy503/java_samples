@@ -1,0 +1,89 @@
+package com.app.labs;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Properties;
+import java.util.Scanner;
+
+public class Readonly {
+
+	public static void main(String[] args) throws ClassNotFoundException, FileNotFoundException, IOException, SQLException 
+	{
+		// TODO Auto-generated method stub
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Properties properties = new Properties();
+		properties.load(new FileInputStream("D:/java_samples/Adv/Cursors/txt.properties"));
+		String string = properties.getProperty("user");
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe",""+string+"","tiger");
+		System.out.println(connection);
+		Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+          //statement.executeUpdate("create table Lokesh(lno number,lname varchar2(10),lmarks number)");
+    PreparedStatement preparedStatement = connection.prepareStatement("insert into Lokesh values(?,?,?)");
+		Scanner scanner = new Scanner(System.in);
+		statement.executeUpdate("create table lokesh(lno number,lname varchar2(20),lmarks number)");
+		while(true)
+		{
+			System.out.println("enter the lnumber");
+			int i = scanner.nextInt();
+			System.out.println("enter lname");
+			String string2 = scanner.next();
+			System.out.println("enter lmarks");
+			int j = scanner.nextInt();
+			preparedStatement.setInt(1, i);
+			preparedStatement.setString(2, string2);
+			preparedStatement.setInt(3, j);
+			preparedStatement.executeUpdate();
+			System.out.println(preparedStatement);
+			System.out.println("press 1 enter another record else 2"); 
+			String string3 = scanner.next();
+			if(string3.equals("2"))
+			{
+				break;
+			}
+					
+				
+			
+		}
+		ResultSet set = statement.executeQuery("select * from Lokesh");
+		ResultSetMetaData data = set.getMetaData();
+		System.out.println(data.getColumnCount());
+	      int j = data.getColumnCount();
+		for(int i=1;i<=j;i++)
+		{
+			System.out.println(data.getColumnType(i));
+			System.out.println(data.getColumnName(i));
+			System.out.println(data.getColumnClassName(i));
+		}
+		
+		
+		
+		
+	
+		set.afterLast();
+		while(set.previous())
+		{
+			//set.updateI
+			set.first();
+			set.updateInt( 1,  1777);
+			set.updateRow();
+			System.out.println(set.getInt(1)+"-----------"+set.getString(2)+"---------"+set.getInt(3));
+		}
+		DatabaseMetaData databaseMetaData = connection.getMetaData();
+		System.out.println(databaseMetaData.getDriverVersion());
+		System.out.println(databaseMetaData.getDatabaseProductName());
+		System.out.println(databaseMetaData.getJDBCMajorVersion());
+		
+		
+
+	}
+
+}

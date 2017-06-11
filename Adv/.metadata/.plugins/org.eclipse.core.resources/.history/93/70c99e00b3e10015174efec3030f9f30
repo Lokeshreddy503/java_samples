@@ -1,0 +1,33 @@
+
+interface Test1 
+{  
+	void m2();
+	interface Test2
+	{
+		void m1();
+		
+	}
+	
+	
+}
+class loki implements Test1.Test2
+{
+	public void m1()
+	{
+		System.out.println("bye");
+	}
+	public static void main(String[] args)
+	{
+		loki k = new loki();
+		
+		k.m1();
+		
+		
+	}
+	
+}
+
+
+	
+
+

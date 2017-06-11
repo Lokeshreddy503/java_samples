@@ -1,0 +1,35 @@
+<%@page import="com.app.myclass.*,java.util.*"
+ %>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Welcome Page</title>
+</head>
+<body>
+
+  
+  
+<jsp:include page="Lo.html"></jsp:include>
+<%
+ArrayList<Todo> collection = new ArrayList<Todo>();
+
+
+collection = (ArrayList<Todo>)request.getSession().getAttribute("all");
+
+for(Todo d : collection)
+{
+%>	
+	<%= d.getName() %>
+	<%= d.getDescription() %>
+	<%= d.getPriority() %>
+	
+<%
+}
+%>
+
+
+
+
+
+</body>
+</html>

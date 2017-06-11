@@ -1,0 +1,68 @@
+package com.app.labs;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+public class Lokesh {
+
+	public static void main(String[] args) throws ClassNotFoundException, SQLException, InterruptedException 
+	{
+Class.forName("oracle.jdbc.driver.OracleDriver");
+Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","scott","tiger");
+Statement statement = connection.createStatement();
+Scanner scanner = new Scanner(System.in);
+System.out.println("Enter the table name");
+String name = scanner.next();
+String string = "create table "+name+" (Eno number,Ename varchar2(10),Esal number)";
+		
+		while(true)
+		{
+			System.out.println("Enter the  number");
+			int Eno = scanner.nextInt();
+			System.out.println("Enter the  name");
+			String Ename =  scanner.next();
+			System.out.println("enter  marks");
+			int Esal = scanner.nextInt();
+			String s="insert into "  +name+  " values("+Eno+","+Ename+","+Esal+")";
+			int b = statement.executeUpdate(s);
+			System.out.println("the rows inserted:"+b);
+			
+			System.out.println("you want to insert another record(yes/no)");
+			String string3 = scanner.next();
+			if(string3.equals("no"))
+			{
+				break;
+			}
+			
+		}
+		String string6 = "select * from " +name;
+		ResultSet r = statement.executeQuery(string6);
+		ResultSetMetaData kk=r.getMetaData();
+		System.out.println(kk);
+		
+		while(r.next())
+		{
+			System.out.println(+r.getInt(1)+ " ---------" +r.getString(2)+"--------"+r.getInt(3));
+			Thread.sleep(5000);
+		}
+		String string3 ="update "+name+" set Esal=Esal+500 where Esal>=1000 ";
+		int c=statement.executeUpdate(string3);
+		
+		System.out.println(c);
+		System.out.println("please enter the table name you want to drop");
+		String string4 = scanner.next();
+		
+		String String5 = "drop table" +string4;
+		
+		
+		System.out.println( "table " +string4+ "is suceessfully dropped" );
+		
+		
+
+	}
+
+}

@@ -1,0 +1,78 @@
+package com.dss;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class ValidationServlet
+ */
+public class ValidationServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+    /**
+     * Default constructor. 
+     */
+    public ValidationServlet() {
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+	String name = request.getParameter("name");
+	String email = request.getParameter("email");
+	
+	String address = request.getParameter("address");
+	PrintWriter printWriter = response.getWriter();
+	boolean b = false;
+	if(name.isEmpty())
+	{
+		
+		printWriter.println("name requires");
+		b=false;
+	}
+	if(email.isEmpty())
+	{
+		printWriter.println("email requires");
+		b=false;
+	}
+	if(address.isEmpty())
+	{
+		printWriter.println("address requires");
+		b=false;
+	}
+	if(b==true)
+	{
+		System.out.println("hi");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/next");
+	dispatcher.forward(request, response);
+	
+	}
+	else
+	
+	{
+		
+	}
+}
+		
+	
+	
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

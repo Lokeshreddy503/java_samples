@@ -1,0 +1,7 @@
+lokesh
+kranthi
+100
+true
+10.5
+d100
+abcdef
